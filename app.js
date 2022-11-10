@@ -45,10 +45,10 @@ var quizApp = function() {
 		if(this.currentque <= 0) {
 			$("#previous").attr("disabled", true);	
 		}
-		if(this.currentque >= totalque) {
+		if(this.currentque >= totalque-1) {
 				$('#next').attr('disabled', true);
 				for(var i = 0; i < totalque; i++) {
-					this.score = this.score + quiz.JS[i].score;
+					this.score = this.score + quiz[i].score;
 				}
 			return this.showResult(this.score);	
 		}
@@ -60,13 +60,13 @@ var quizApp = function() {
 		for(var j = 0; j < totalque; j++) {
 			var res;
 			if(quiz.JS[j].score == 0) {
-					res = '<span class="wrong">' + quiz.JS[j].score + '</span><i class="fa fa-remove c-wrong"></i>';
+					res = '<span class="wrong">' + quiz[j].score + '</span><i class="fa fa-remove c-wrong"></i>';
 			} else {
-				res = '<span class="correct">' + quiz.JS[j].score + '</span><i class="fa fa-check c-correct"></i>';
+				res = '<span class="correct">' + quiz[j].score + '</span><i class="fa fa-check c-correct"></i>';
 			}
 			$("#result").append(
-			'<div class="result-question"><span>Q ' + quiz.JS[j].id + '</span> &nbsp;' + quiz.JS[j].question + '</div>' +
-			'<div><b>Correct answer:</b> &nbsp;' + quiz.JS[j].answer + '</div>' +
+			'<div class="result-question"><span>Q ' + quiz[j].id + '</span> &nbsp;' + quiz[j].question + '</div>' +
+			'<div><b>Correct answer:</b> &nbsp;' + quiz[j].answer + '</div>' +
 			'<div class="last-row"><b>Score:</b> &nbsp;' + res +
 			
 			'</div>' 
@@ -77,18 +77,18 @@ var quizApp = function() {
 	}
 	
 	this.checkAnswer = function(option) {
-		var answer = quiz.JS[this.currentque].answer;
+		var answer = quiz[this.currentque].answer;
 		option = option.replace(/\</g,"&lt;")   //for <
 		option = option.replace(/\>/g,"&gt;")   //for >
 		option = option.replace(/"/g, "&quot;")
 
-		if(option ==  quiz.JS[this.currentque].answer) {
+		if(option ==  quiz[this.currentque].answer) {
 			if(quiz.JS[this.currentque].score == "") {
-				quiz.JS[this.currentque].score = 1;
-				quiz.JS[this.currentque].status = "correct";
+				quiz[this.currentque].score = 1;
+				quiz[this.currentque].status = "correct";
 		}
 		} else {
-			quiz.JS[this.currentque].status = "wrong";
+			quiz[this.currentque].status = "wrong";
 		}
 		
 	}	
