@@ -1,7 +1,11 @@
 
-let requestURL = 'http://localhost:3001/quizz';
+let requestURL = 'https://quizzserv.herokuapp.com//quizz';
 let request = new XMLHttpRequest();
 request.open('GET', requestURL);
+request.setRequestHeader('Access-Control-Allow-Origin','*');
+
+request.setRequestHeader('Content-type','application/json');
+request.setRequestHeader('Access-Control-Allow-Methods','GET');
 request.responseType = 'json';
 request.send();
 
@@ -59,7 +63,7 @@ var quizApp = function() {
 		$("#result").html("<h1 class='res-header'>Total Score: &nbsp;" + scr  + '/' + totalque + "</h1>");
 		for(var j = 0; j < totalque; j++) {
 			var res;
-			if(quiz.JS[j].score == 0) {
+			if(quiz[j].score == 0) {
 					res = '<span class="wrong">' + quiz[j].score + '</span><i class="fa fa-remove c-wrong"></i>';
 			} else {
 				res = '<span class="correct">' + quiz[j].score + '</span><i class="fa fa-check c-correct"></i>';
