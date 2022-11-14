@@ -8,8 +8,8 @@
     <title>Javascript Quiz</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 </head>
 
 <body>
@@ -21,9 +21,10 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div id="result" class="quiz-body">
-                        <form name="logForm" onSubmit="" action="question.html">
-                            <input type="text" name="speudo"/>
-                            <button name="connect" id="connect" class="btn btn-success">Connection</button>
+                        <form name="logForm" >
+                            <input type="text" name="usr" placeholder="username" />
+                            <input type="password" name="pword" placeholder="password" />
+                            <button name="connect" id="connect" onSubmit="validateForm();" class="btn btn-success">Connection</button>
                             
                         </form>
                     </div>
@@ -33,7 +34,22 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
-    <script src="app.js"></script>
+    <script>
+        function validateForm() {
+        var un = document.logForm.usr.value;
+        var pw = document.logForm.pword.value;
+        var username = "admin"; 
+        var password = "admin";
+        if ((un == username) && (pw == password)) {
+            window.location = "admin.html";
+            return false;
+        }
+        else {
+            window.location = "question.html";
+            return false;
+        }
+      }
+    </script>
 </body>
 
 </html>

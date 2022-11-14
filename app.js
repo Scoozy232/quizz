@@ -28,6 +28,7 @@ var quizApp = function() {
 			$("#tque").html(totalque);
 			$("#previous").attr("disabled", false);
 			$("#next").attr("disabled", false);
+			
 			$("#qid").html(quiz[this.currentque].id + '.');
 	
 			
