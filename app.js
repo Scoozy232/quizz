@@ -1,5 +1,5 @@
 
-let requestURL = 'https://quizzserv.herokuapp.com//quizz';
+let requestURL = 'https://quizzserv.herokuapp.com/quizz';
 let request = new XMLHttpRequest();
 request.open('GET', requestURL);
 request.setRequestHeader('Access-Control-Allow-Origin','*');
